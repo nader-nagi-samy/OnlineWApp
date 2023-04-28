@@ -1,0 +1,21 @@
+﻿@model ComicBookGalary.Models.ComicBook[]
+
+@{
+    ViewBag.Title = "Comic Books";
+}
+
+<h2>@ViewBag.Title</h2>
+
+
+<div class="row">
+    @foreach (var comiBook in Model)
+    {
+        <div class="col-md-3">
+            <h4>@Html.ActionLink(@comiBook.DisplayText, "Detail", new { id = comiBook.Id }) </h4>
+            <a href="@Url.Action("Detail", new { id = comiBook.Id })">
+                <img src="~/Images/@comiBook.CoverImageFileName"
+                     alt="@comiBook.DisplayText" class="img-responsive" />
+            </a>
+        </div>
+    }
+</div>
